@@ -26,28 +26,72 @@
       rel="stylesheet"
       href="https://js.arcgis.com/4.16/esri/themes/light/main.css"
     />
-    <!-- <script src="https://js.arcgis.com/4.16/"></script> -->
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>Horizontal Slide</section>
         <section>
-          <section>Vertical Slide 1</section>
+          <h3>Web GIS 快速導覽</h4>
+          <div>Tsung-Tang Lee</div>
+        </section>
+        <section>
+          <section>Web GIS 應用場景</section>
           <section>
-            <div>
-              <h2>Leaflet</h2>
-              <div id="map" style="width: 600px; height: 400px"></div>
+              <div class="card">
+                <h3>TBN</h3>
+                <img
+              src="https://hackmd.io/_uploads/B1nSx3TXq.png"
+              width="700"
+              alt=""
+            />
+              </div>
+          </section>
+          <section>
+            <div class="card">
+              <h3>debugger</h3>
+              <img
+            src="https://user-images.githubusercontent.com/20000669/135740704-a86c0247-fa2f-47ec-82a8-65196bcbf0b8.png"
+            width="700"
+            alt=""
+          />
+            </div>
+          </section>
+          <section><img src="https://hackmd.io/_uploads/rk6Ew0Amc.png" height="700" alt=""></section>
+        </section>
+        <section>
+          <section>Web 地圖API</section>
+          <section>
+            <div class="container">
+              <div class="card">
+                <h2>Leaflet</h2>
+                <div id="map" class="chart"></div>
+              </div>
+              <div class="card">
+                <h2>ArcGIS</h2>
+                <div id="amap" class="chart"></div>
+              </div>
             </div>
           </section>
         </section>
         <section>
-          <h1>網格與向量</h1>
-          在GIS中的資料呈現模式分為網格模式與向量模式兩種。
-          網格模式可以想像成地圖是用一個一個正方形的格子所組成，
-          網格越小，解析度也就越高，適用於對資料的精確度要求較低，如衛星影像、航照圖等。
-          向量模式則直接紀錄精確的座標，線及面的表示方法則由一堆點所組成，
-          精確度較高，適用於作為地理空間分析。
+          <section>
+            <iframe
+              style="width: 100%; height: 80vh"
+              src="https://sandcastle.cesium.com/?src=Multiple%20Synced%20Views.html"
+              frameborder="0"
+            ></iframe>
+          </section>
+          <section>
+            <h2>網格與向量</h2>
+            在GIS中的資料呈現模式分為網格模式與向量模式兩種。
+            網格模式可以想像成地圖是用一個一個正方形的格子所組成，
+            網格越小，解析度也就越高，適用於對資料的精確度要求較低，如衛星影像、航照圖等。
+            向量模式則直接紀錄精確的座標，線及面的表示方法則由一堆點所組成，
+            精確度較高，適用於作為地理空間分析。
+          </section>
+        </section>
+        <section>
+          <section>3D地圖－CesiumJS</section>
         </section>
       </div>
     </div>
@@ -56,7 +100,18 @@
     <script src="plugin/notes/notes.js"></script>
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
+    <script src="https://js.arcgis.com/4.16/"></script>
+
     <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      })
       ;(function () {
         var map = L.map("map").setView([23.5, 121], 8)
 
@@ -73,15 +128,31 @@
           }
         ).addTo(map)
       })()
-      // More info about initialization & config:
-      // - https://revealjs.com/initialization/
-      // - https://revealjs.com/config/
-      Reveal.initialize({
-        hash: true,
-
-        // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-      })
+      ;(function () {
+        require(["esri/Map", "esri/views/MapView"], function (Map, MapView) {
+          var myMap = new Map({
+            basemap: "streets-vector",
+          })
+          var view = new MapView({
+            container: "amap",
+            map: myMap,
+            zoom: 6,
+            center: [121, 23.5],
+          })
+        })
+      })()
     </script>
+    <style>
+      .container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 800px;
+      }
+      .chart {
+        min-width: 400px;
+        min-height: 400px;
+      }
+    </style>
   </body>
 </html>
