@@ -41,17 +41,26 @@
             <div style="overflow-y:auto;height:570px;">
               <img src="https://hackmd.io/_uploads/rk6Ew0Amc.png"  alt="">
             </div> </section>
+            <section> <h4>網路圖磚服務(WMTS)</h4>
+            </section>
             <section>
-              <div>
-                <h4>網路圖磚服務(WMTS)</h4>
-              <img src="https://docs.qgis.org/2.14/id/_images/concept_wmts.png" alt="">
+              <div class="" style="display:flex">
+
+              <div >
+              <img src="https://docs.qgis.org/2.14/id/_images/concept_wmts.png"                   width="450"
+              alt="">
               <a href="https://docs.qgis.org/2.14/id/docs/user_manual/working_with_ogc/ogc_client_support.html" target="_blank" style="font-size:12px;" rel="noopener noreferrer">QGIS</a>
               </div>
+              <div class="card">
+                <img src="https://hackmd.io/_uploads/H1CcssSEc.png"                   width="450"
+                alt="">
+                <a href="https://blog.woosmap.com/" target="_blank" style="font-size:12px;" rel="noopener noreferrer">https://blog.woosmap.com/</a></div>
+              </div>
             </section>
-            <section>Web 地圖API</section>
+            <section>Web Map API</section>
             <section>
-              <div class="container">
-                <div class="card">
+              <div class="" style="display:flex">
+                <div class="">
                   <h2>Leaflet</h2>
                   <div id="map" class="chart"></div>
                 </div>
@@ -159,7 +168,7 @@
         plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
       })
       ;(function () {
-        var map = L.map("map").setView([23.5, 121], 8)
+        var map = L.map("map").setView([23.5, 121], 6)
 
         var tiles = L.tileLayer(
           "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
